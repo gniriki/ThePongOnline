@@ -9,6 +9,7 @@ import Socket = SocketIO.Socket;
 export class GameServer {
     simulation: GameSimulation;
     players: Array<Socket>;
+    gameMode: GameMode;
 
     dt: number = 0.01;
 
@@ -18,13 +19,11 @@ export class GameServer {
     public constructor() {
         this.simulation = new GameSimulation();
         this.players = [];
+        this.gameMode = GameMode.twoPlayerMode();
     }
 
     public run() {
         this.setupSockets();
-
-        setInterval(() => this.gameLoop(), 1000 / 60);
-        setInterval(() => this.broadcastState(), 1000 / 200);
     }
 
     public broadcastState() {
@@ -50,7 +49,26 @@ export class GameServer {
         io.on('connection',
             (socket: Socket) => {
                 console.log('A user connected!', socket.handshake.query.type);
+
+                if (this.isMaxPlayers()) {
+                    socket.emit('kick', { message: 'Too many players!' });
+                    socket.disconnect(true);
+                }
+
                 this.players.push(socket);
+                this.playerConnected();
             });
+    }
+
+    playerConnected(): any {
+        //if (isMaxPlayers())
+        {
+            setInterval(() => this.gameLoop(), 1000 / 60);
+            setInterval(() => this.broadcastState(), 1000 / 200);
+        }
+    }
+
+    isMaxPlayers(): boolean {
+        return this.players.length >= this.gameMode.maxPlayers;
     }
 }

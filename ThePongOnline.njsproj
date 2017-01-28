@@ -37,6 +37,7 @@
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="typings\globals\socket.io\typings.json" />
+    <TypeScriptCompile Include="Scripts\PongServer\GameMode.ts" />
     <TypeScriptCompile Include="Scripts\PongServer\GameServer.ts" />
     <TypeScriptCompile Include="Scripts\PongServer\GameSimulation.ts" />
     <TypeScriptCompile Include="Scripts\Shared\Rect.ts" />
