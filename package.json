@@ -1,0 +1,9 @@
+{
+  "name": "the-pong-online",
+  "version": "0.0.0",
+  "description": "ThePongOnline",
+  "main": "app.js",
+  "author": {
+    "name": "Oem"
+  }
+}
