@@ -3,7 +3,7 @@ import { Vector2 } from "../Shared/Vector2";
 
 export class GameSimulation {
     ball: GameObject;
-    ballSpeed: number = 10;
+    ballSpeed: number = 1;
     clock: number = 0;
     screen: Vector2;
     simulationTime: number;
@@ -21,8 +21,8 @@ export class GameSimulation {
 
     public simulate(deltaTime: number) {
 
-        this.ball.position.x += this.ball.velocity.x;
-        this.ball.position.y += this.ball.velocity.y;
+        this.ball.position.x += this.ball.velocity.x * deltaTime;
+        this.ball.position.y += this.ball.velocity.y * deltaTime;
 
         if (this.ball.getBounds().left < 0) {
             this.ball.velocity.x = -this.ball.velocity.x;
