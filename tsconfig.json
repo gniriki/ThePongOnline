@@ -1,0 +1,19 @@
+﻿{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "target": "es6"
+  },
+  "include": [
+    "Scripts/**/*",
+    "typings/**/*",
+    "server.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

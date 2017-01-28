@@ -1,16 +1,15 @@
 "use strict";
-var express = require('express');
-var PongHttpServer = (function () {
-    function PongHttpServer() {
+const express = require("express");
+class PongHttpServer {
+    constructor() {
         this.port = process.env.port || 1337;
-        this.baseDirectory = "./client"; // or whatever base directory you want
+        this.baseDirectory = "./client";
     }
-    PongHttpServer.prototype.run = function () {
+    run() {
         var app = express();
-        app.use('/', express.static(this.baseDirectory)); // ← adjust
+        app.use('/', express.static(this.baseDirectory));
         app.listen(this.port, function () { console.log("listening on port " + this.port); });
-    };
-    return PongHttpServer;
-}());
+    }
+}
 exports.PongHttpServer = PongHttpServer;
 //# sourceMappingURL=PongHttpServer.js.map

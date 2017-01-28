@@ -4,7 +4,6 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 import { GameSimulation } from "./GameSimulation";
-
 import Socket = SocketIO.Socket;
 
 export class GameServer {
@@ -49,7 +48,7 @@ export class GameServer {
 
     public setupSockets() {
         io.on('connection',
-            socket => {
+            (socket: Socket) => {
                 console.log('A user connected!', socket.handshake.query.type);
                 this.players.push(socket);
             });
