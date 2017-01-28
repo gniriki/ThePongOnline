@@ -36,36 +36,36 @@ export class GameSimulation {
     public simulate(deltaTime: number) {
         if (this.ball.getBounds().left < 0) {
             this.ball.velocity.x = -this.ball.velocity.x;
-            console.log("Bump left");
+            //console.log("Bump left");
         }
 
         if (this.ball.getBounds().right > this.screen.x) {
             this.ball.velocity.x = -this.ball.velocity.x;
-            console.log("Bump right");
+            //console.log("Bump right");
         }
 
         if (this.ball.getBounds().top < 0) {
             this.ball.velocity.y = -this.ball.velocity.y;
-            console.log("Bump top");
+            //console.log("Bump top");
         }
 
         if (this.ball.getBounds().bottom > this.screen.y) {
             this.ball.velocity.y = -this.ball.velocity.y;
-            console.log("Bump bottom");
+            //console.log("Bump bottom");
         }
 
         let paddle0FuturePosition = this.getFuturePosition(this.paddles[0], deltaTime);
 
         if (this.testAabb(paddle0FuturePosition, this.paddles[0].size, this.ball.position, this.ball.size)) {
             this.ball.velocity.x = -this.ball.velocity.x;
-            console.log("Player 0 hit the ball");
+            //console.log("Player 0 hit the ball");
         }
 
         let paddle1FuturePosition = this.getFuturePosition(this.paddles[1], deltaTime);
 
         if (this.testAabb(paddle1FuturePosition, this.paddles[1].size, this.ball.position, this.ball.size)) {
             this.ball.velocity.x = -this.ball.velocity.x;
-            console.log("Player 1 hit the ball");
+            //console.log("Player 1 hit the ball");
         }
 
         this.updatePosition(this.ball, deltaTime);

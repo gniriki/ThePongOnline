@@ -26,11 +26,17 @@ export class GameServer {
 
     public run() {
         this.setupSockets();
-        this.startGame();
+
+        http.listen(1338, function () {
+            console.log('listening on *:1338');
+        });
+
+        //this.startGame();
     }
 
     public broadcastState() {
         for (var socket of this.players) {
+            console.log("Emitting simulation packet");
             socket.emit('simulation', { ball: this.simulation.ball });
         }
     }
@@ -52,6 +58,7 @@ export class GameServer {
         io.on('connection',
             (socket: Socket) => {
                 console.log('A user connected!', socket.handshake.query.type);
+                //console.log(socket);
 
                 if (this.isMaxPlayers()) {
                     socket.emit('kick', { message: 'Too many players!' });
@@ -83,7 +90,7 @@ export class GameServer {
     }
 
     playerConnected(): any {
-        //if (isMaxPlayers())
+        //if (this.isMaxPlayers())
         {
             this.startGame();
         }
@@ -91,7 +98,7 @@ export class GameServer {
 
     startGame(): any {
         setInterval(() => this.gameLoop(), 1000 / 60);
-        setInterval(() => this.broadcastState(), 1000 / 200);
+        setInterval(() => this.broadcastState(), 1000 / 100);
     }
 
     isMaxPlayers(): boolean {
