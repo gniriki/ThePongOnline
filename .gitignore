@@ -42,3 +42,6 @@ jspm_packages
 \obj
 *.js
 *.js.map
+
+# Bower
+bower_components/

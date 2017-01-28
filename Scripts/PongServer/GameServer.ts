@@ -4,13 +4,15 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 import { GameSimulation } from "./GameSimulation";
+import { GameMode } from "./GameMode";
+
 import Socket = SocketIO.Socket;
 
 export class GameServer {
     simulation: GameSimulation;
     players: Array<Socket>;
     gameMode: GameMode;
-
+    nextPlayerNumber: number = 0;
     dt: number = 0.01;
 
     currentTime: number = new Date().valueOf();
@@ -24,6 +26,7 @@ export class GameServer {
 
     public run() {
         this.setupSockets();
+        this.startGame();
     }
 
     public broadcastState() {
@@ -55,6 +58,25 @@ export class GameServer {
                     socket.disconnect(true);
                 }
 
+                var player = {
+                    id: this.getNextPlayerId()
+                };
+
+                socket.on('inputLeft',
+                    () => {
+                        this.simulation.input(player.id, 'left');
+                    });
+
+                socket.on('inputRight',
+                    () => {
+                        this.simulation.input(player.id, 'right');
+                    });
+
+                socket.on('clearInput',
+                    () => {
+                        this.simulation.clearInput(player.id);
+                    });
+
                 this.players.push(socket);
                 this.playerConnected();
             });
@@ -63,12 +85,22 @@ export class GameServer {
     playerConnected(): any {
         //if (isMaxPlayers())
         {
-            setInterval(() => this.gameLoop(), 1000 / 60);
-            setInterval(() => this.broadcastState(), 1000 / 200);
+            this.startGame();
         }
+    }
+
+    startGame(): any {
+        setInterval(() => this.gameLoop(), 1000 / 60);
+        setInterval(() => this.broadcastState(), 1000 / 200);
     }
 
     isMaxPlayers(): boolean {
         return this.players.length >= this.gameMode.maxPlayers;
+    }
+
+    getNextPlayerId(): number {
+        let newNumber = this.nextPlayerNumber;
+        this.nextPlayerNumber++;
+        return newNumber;
     }
 }

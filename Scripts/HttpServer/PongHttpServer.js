@@ -1,5 +1,5 @@
 "use strict";
-const express = require("express");
+const express = require('express');
 class PongHttpServer {
     constructor() {
         this.port = process.env.port || 1337;

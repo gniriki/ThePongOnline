@@ -1,4 +1,4 @@
-class GameMode {
+export class GameMode {
     public maxPlayers: number;
 
     public static twoPlayerMode(): GameMode {
