@@ -79,6 +79,8 @@ export class GameServer {
 
                 this.players.push(socket);
                 this.playerConnected();
+
+                socket.emit('connected', { playerId: player.id });
             });
     }
 
