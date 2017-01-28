@@ -20,7 +20,7 @@
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
@@ -34,6 +34,12 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="typings\globals\socket.io\typings.json" />
+    <TypeScriptCompile Include="Scripts\PongServer\GameServer.ts" />
+    <TypeScriptCompile Include="Scripts\PongServer\GameSimulation.ts" />
+    <TypeScriptCompile Include="Scripts\Shared\Rect.ts" />
+    <TypeScriptCompile Include="Scripts\Shared\Vector2.ts" />
+    <TypeScriptCompile Include="Scripts\Shared\GameObject.ts" />
     <TypeScriptCompile Include="Scripts\typings\express\express.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="server.ts" />
@@ -41,14 +47,21 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <TypeScriptCompile Include="Scripts\HttpServer\PongHttpServer.ts" />
+    <TypeScriptCompile Include="typings\globals\socket.io\index.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="client\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\HttpServer\" />
+    <Folder Include="Scripts\Shared\" />
+    <Folder Include="Scripts\PongServer\" />
     <Folder Include="Scripts\typings\" />
     <Folder Include="Scripts\typings\express\" />
     <Folder Include="Scripts\typings\node\" />
+    <Folder Include="typings\" />
+    <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\socket.io\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
