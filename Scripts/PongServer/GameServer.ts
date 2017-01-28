@@ -9,27 +9,27 @@ import Socket = SocketIO.Socket;
 
 export class GameServer {
     simulation: GameSimulation;
-    players: Array<Socket> = [];
+    players: Array<Socket>;
 
     dt: number = 0.01;
 
     currentTime: number = new Date().valueOf();
     accumulator: number = 0.0;
 
-
     public constructor() {
         this.simulation = new GameSimulation();
+        this.players = [];
     }
 
     public run() {
         this.setupSockets();
 
-        setInterval(this.gameLoop(), 1000 / 60);
-        setInterval(this.broadcastState(), 1000 / 200);
+        setInterval(() => this.gameLoop(), 1000 / 60);
+        setInterval(() => this.broadcastState(), 1000 / 200);
     }
 
     public broadcastState() {
-        for (let socket of this.players) {
+        for (var socket of this.players) {
             socket.emit('simulation', { ball: this.simulation.ball });
         }
     }

@@ -26,18 +26,22 @@ export class GameSimulation {
 
         if (this.ball.getBounds().left < 0) {
             this.ball.velocity.x = -this.ball.velocity.x;
+            console.log("Bump left");
         }
 
         if (this.ball.getBounds().right > this.screen.x) {
             this.ball.velocity.x = -this.ball.velocity.x;
+            console.log("Bump right");
         }
 
         if (this.ball.getBounds().top < 0) {
             this.ball.velocity.y = -this.ball.velocity.y;
+            console.log("Bump top");
         }
 
         if (this.ball.getBounds().bottom > this.screen.y) {
             this.ball.velocity.y = -this.ball.velocity.y;
+            console.log("Bump bottom");
         }
 
         this.simulationTime += deltaTime;
