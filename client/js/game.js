@@ -9,13 +9,26 @@ var h = 300;
 var ballcoordX = w / 2;
 var ballcoordY = h / 2;
 
+
 function setupSocket(socket)
 {
     socket.on('simulation', function (data) {
+        console.log(data);
         if (ballInitiated)
         {
-            ball.position.x = data.ball.position.x;
-            ball.position.y = data.ball.position.y;
+            if (Math.abs(ball.position.x - data.ball.position.x) > 2)
+            {
+                ball.position.x = data.ball.position.x;
+            }
+            
+            if (Math.abs(ball.position.y - data.ball.position.y) > 2)
+            {
+                ball.position.y = data.ball.position.y;
+            }
+            
+            ball.body.velocity.x = data.ball.velocity.x;
+            ball.body.velocity.y = data.ball.velocity.y;
+            
         }
         else
         {
@@ -24,6 +37,15 @@ function setupSocket(socket)
         }
     });
 }
+
+/*
+function update () {
+
+    if (ballInitiated)
+    {
+    }
+}
+*/
 
 function connectToGame()
 {
@@ -37,6 +59,12 @@ function preload() {
 }
 
 function create() {
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    
     ball = game.add.sprite(ballcoordX, ballcoordY, 'ball');
+    ball.anchor.setTo(0.5, 0.5);
+    
+    game.physics.enable(ball, Phaser.Physics.ARCADE);
+    
     ballInitiated = true;
 }

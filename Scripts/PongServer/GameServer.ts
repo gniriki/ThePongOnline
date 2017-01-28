@@ -36,7 +36,6 @@ export class GameServer {
 
     public broadcastState() {
         for (var socket of this.players) {
-            console.log("Emitting simulation packet");
             socket.emit('simulation', { ball: this.simulation.ball });
         }
     }
