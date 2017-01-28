@@ -4,7 +4,7 @@ import { Vector2 } from "../Shared/Vector2";
 export class GameSimulation {
     ball: GameObject;
     paddles: GameObject[] = [];
-    ballSpeed: number = 1;
+    ballSpeed: number = 150;
     paddleSpeed: number = 1;
     clock: number = 0;
     screen: Vector2;
@@ -90,8 +90,8 @@ export class GameSimulation {
     }
 
     updatePosition(gameObject: GameObject, deltaTime: number): any {
-        gameObject.position.x += gameObject.velocity.x * deltaTime;
-        gameObject.position.y += gameObject.velocity.y * deltaTime;
+        gameObject.position.x += gameObject.velocity.x * deltaTime / 1000;
+        gameObject.position.y += gameObject.velocity.y * deltaTime / 1000;
     }
 
     getFuturePosition(gameObject: GameObject, deltaTime: number): Vector2 {

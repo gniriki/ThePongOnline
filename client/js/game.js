@@ -9,26 +9,26 @@ var h = 300;
 var ballcoordX = w / 2;
 var ballcoordY = h / 2;
 
+var vx = 0;
+var vy = 0;
 
 function setupSocket(socket)
 {
     socket.on('simulation', function (data) {
-        console.log(data);
         if (ballInitiated)
         {
-            if (Math.abs(ball.position.x - data.ball.position.x) > 2)
+            if (Math.abs(ball.position.x - data.ball.position.x) > 3)
             {
                 ball.position.x = data.ball.position.x;
             }
             
-            if (Math.abs(ball.position.y - data.ball.position.y) > 2)
+            if (Math.abs(ball.position.y - data.ball.position.y) > 3)
             {
                 ball.position.y = data.ball.position.y;
             }
             
-            ball.body.velocity.x = data.ball.velocity.x;
-            ball.body.velocity.y = data.ball.velocity.y;
-            
+            vx = data.ball.velocity.x;
+            vy = data.ball.velocity.y;
         }
         else
         {
@@ -38,18 +38,18 @@ function setupSocket(socket)
     });
 }
 
-/*
 function update () {
 
     if (ballInitiated)
     {
+        ball.position.x += vx * this.game.time.elapsed / 1000.0;
+        ball.position.y += vy * this.game.time.elapsed / 1000.0;
     }
 }
-*/
 
 function connectToGame()
 {
-    game = new Phaser.Game(500, 300, Phaser.AUTO, 'phaser-example', { preload: preload, create: create });
+    game = new Phaser.Game(500, 300, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update });
     var socket = io("http://localhost:1338");
     setupSocket(socket);
 }
@@ -59,12 +59,8 @@ function preload() {
 }
 
 function create() {
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-    
     ball = game.add.sprite(ballcoordX, ballcoordY, 'ball');
     ball.anchor.setTo(0.5, 0.5);
-    
-    game.physics.enable(ball, Phaser.Physics.ARCADE);
     
     ballInitiated = true;
 }
