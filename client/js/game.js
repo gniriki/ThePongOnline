@@ -12,8 +12,19 @@ var ballcoordY = h / 2;
 var vx = 0;
 var vy = 0;
 
-function setupSocket(socket)
-{
+function setupSocket(socket) {
+    socket.on('setup',
+        function (data) {
+            //do init here
+
+            socket.emit('gotit');
+        });
+
+    socket.on('startGame',
+        function (data) {
+            //to do
+        });
+
     socket.on('simulation', function (data) {
         if (ballInitiated)
         {

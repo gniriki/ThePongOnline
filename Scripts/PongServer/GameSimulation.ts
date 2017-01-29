@@ -4,11 +4,12 @@ import { Vector2 } from "../Shared/Vector2";
 export class GameSimulation {
     ball: GameObject;
     paddles: GameObject[] = [];
-    ballSpeed: number = 150;
+    ballSpeed: number = 0.15;
     paddleSpeed: number = 1;
     clock: number = 0;
     screen: Vector2;
     simulationTime: number;
+    paddleSize: Vector2;
 
     public constructor() {
         this.screen = new Vector2(500, 300);
@@ -20,15 +21,17 @@ export class GameSimulation {
 
         this.simulationTime = 0;
 
+        this.paddleSize =new Vector2(5, 25);
+
         let paddle = new GameObject();
         paddle.position = new Vector2(10, this.screen.y / 2);
-        paddle.size = new Vector2(5, 25);
+        paddle.size = this.paddleSize;
 
         this.paddles.push(paddle);
 
         let paddle2 = new GameObject();
         paddle2.position = new Vector2(this.screen.x - 15, this.screen.y / 2);
-        paddle2.size = new Vector2(2, 25);
+        paddle2.size = this.paddleSize;
 
         this.paddles.push(paddle2);
     }
@@ -90,8 +93,8 @@ export class GameSimulation {
     }
 
     updatePosition(gameObject: GameObject, deltaTime: number): any {
-        gameObject.position.x += gameObject.velocity.x * deltaTime / 1000;
-        gameObject.position.y += gameObject.velocity.y * deltaTime / 1000;
+        gameObject.position.x += gameObject.velocity.x * deltaTime;
+        gameObject.position.y += gameObject.velocity.y * deltaTime;
     }
 
     getFuturePosition(gameObject: GameObject, deltaTime: number): Vector2 {

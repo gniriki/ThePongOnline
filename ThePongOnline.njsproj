@@ -34,6 +34,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="client\assets\ball.png" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="typings\globals\socket.io\typings.json" />
@@ -55,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="client\" />
+    <Folder Include="client\assets\" />
+    <Folder Include="client\js\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\HttpServer\" />
     <Folder Include="Scripts\Shared\" />
@@ -65,6 +68,11 @@
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
     <Folder Include="typings\globals\socket.io\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="client\js\game.js" />
+    <Compile Include="client\js\phaser.min.js" />
+    <Compile Include="client\js\socket.io-1.4.5.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

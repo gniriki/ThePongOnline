@@ -64,36 +64,55 @@ export class GameServer {
                     socket.disconnect(true);
                 }
 
-                var player = {
-                    id: this.getNextPlayerId()
+                var playerSettings = {
+                    playerId: this.getNextPlayerId(),
+                    screenSize: this.simulation.screen,
+                    ball: {
+                        size: this.simulation.ball.size,
+                        position: this.simulation.ball.position
+                    },
+                    paddle1: {
+                        size: this.simulation.paddleSize,
+                        position: this.simulation.paddles[0].position
+                    },
+                    paddle2: {
+                        size: this.simulation.paddleSize,
+                        position: this.simulation.paddles[1].position
+                    }
                 };
+
+                socket.emit('setup', playerSettings);
 
                 socket.on('inputLeft',
                     () => {
-                        this.simulation.input(player.id, 'left');
+                        this.simulation.input(playerSettings.playerId, 'left');
                     });
 
                 socket.on('inputRight',
                     () => {
-                        this.simulation.input(player.id, 'right');
+                        this.simulation.input(playerSettings.playerId, 'right');
                     });
 
                 socket.on('clearInput',
                     () => {
-                        this.simulation.clearInput(player.id);
+                        this.simulation.clearInput(playerSettings.playerId);
                     });
 
-                this.players.push(socket);
-                this.playerConnected();
+                socket.on('gotit',
+                    () => {
+                        this.players.push(socket);
+                        this.playerConnected(socket);
+                    });
 
-                socket.emit('connected', { playerId: player.id });
             });
     }
 
-    playerConnected(): any {
+    playerConnected(socket: Socket): any {
         //if (this.isMaxPlayers())
         {
             this.startGame();
+
+            socket.emit('startGame', {});
         }
     }
 
