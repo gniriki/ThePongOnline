@@ -8,7 +8,8 @@ class PongHttpServer {
     run() {
         var app = express();
         app.use('/', express.static(this.baseDirectory));
-        app.listen(this.port, function () { console.log("listening on port " + this.port); });
+        var port = this.port;
+        app.listen(this.port, function () { console.log("listening on port " + port); });
     }
 }
 exports.PongHttpServer = PongHttpServer;

@@ -45,3 +45,4 @@ jspm_packages
 
 # Bower
 bower_components/
+!client/js/*.js
