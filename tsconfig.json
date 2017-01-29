@@ -10,7 +10,8 @@
   "include": [
     "Scripts/**/*",
     "typings/**/*",
-    "server.ts"
+    "server.ts",
+    "client/js/*.ts"
   ],
   "exclude": [
     "node_modules",
