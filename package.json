@@ -8,17 +8,20 @@
   },
   "dependencies": {
     "express": "^4.14.0",
+    "phaser": "^2.6.2",
     "socket.io": "^1.7.2"
   },
   "devDependencies": {
     "browserify": "^14.0.0",
-    "typescript": "^2.1.5"
+    "expose-loader": "^0.7.1",
+    "typescript": "^2.1.5",
+    "webpack": "^1.14.0"
   },
-
   "scripts": {
-    "serve-http": "node server.js",
-    "bundle-js": "browserify client/js/game.js -o client/js/bundle.js",
+    "serve": "node server.js",
+    "bundle-js": "webpack",
     "compile-ts": "tsc",
-    "start": "npm run compile-ts && npm run bundle-js && npm run serve-http"
+    "open-browser": "start http://localhost:1337",
+    "start": "npm run compile-ts && npm run bundle-js && npm run open-browser & npm run serve"
   }
 }

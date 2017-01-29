@@ -1,9 +1,12 @@
 ﻿# ThePongOnline
 
+Requirements:
+npm install webpack -g
+
 Commands:
 compile-ts - compile typescript files
-bundle-js - bundje client js files
-serve-http - start the game and http server
+bundle-js - bundle client js files
+serve - start the game and http server
 start - compile, bundle, serve
 
 To run for the first time:
