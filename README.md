@@ -1,9 +1,11 @@
 ﻿# ThePongOnline
 
 Commands:
-npm install
-npm run compile:ts
-npm start
+compile-ts - compile typescript files
+bundle-js - bundje client js files
+serve-http - start the game and http server
+start - compile, bundle, serve
 
-Bundling the client:
-browserify client/js/game.js -o client/js/bundle.js
+To run for the first time:
+npm install
+npm start

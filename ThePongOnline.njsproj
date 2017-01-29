@@ -35,6 +35,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="client\assets\ball.png" />
+    <Content Include="client\assets\player.png" />
+    <Content Include="LICENSE" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="typings\globals\socket.io\typings.json" />
@@ -73,7 +75,6 @@
     <Folder Include="typings\globals\socket.io\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="client\js\game.js" />
     <Compile Include="client\js\phaser.min.js" />
     <Compile Include="client\js\socket.io-1.4.5.js" />
   </ItemGroup>

@@ -14,8 +14,11 @@
     "browserify": "^14.0.0",
     "typescript": "^2.1.5"
   },
+
   "scripts": {
-    "start": "node server.js",
-    "compile:ts": "tsc"
+    "serve-http": "node server.js",
+    "bundle-js": "browserify client/js/game.js -o client/js/bundle.js",
+    "compile-ts": "tsc",
+    "start": "npm run compile-ts && npm run bundle-js && npm run serve-http"
   }
 }
