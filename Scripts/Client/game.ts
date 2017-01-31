@@ -1,7 +1,7 @@
 ﻿import { GameSession } from "./gamesession";
 
-require('pixi');
-require('p2');
+require("expose-loader?PIXI!pixi");
+require("expose-loader?p2!p2");
 
 var Phaser = require('phaser');
 

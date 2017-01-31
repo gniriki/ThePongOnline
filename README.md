@@ -4,8 +4,7 @@ Requirements:
 npm install webpack -g
 
 Commands:
-compile-ts - compile typescript files
-bundle-js - bundle client js files
+compile - compile and bundle typescript files
 serve - start the game and http server
 start - compile, bundle, serve
 

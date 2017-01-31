@@ -14,14 +14,15 @@
   "devDependencies": {
     "browserify": "^14.0.0",
     "expose-loader": "^0.7.1",
+    "json-loader": "^0.5.4",
+    "ts-loader": "^2.0.0",
     "typescript": "^2.1.5",
-    "webpack": "^1.14.0"
+    "webpack": "^2.2.1"
   },
   "scripts": {
     "serve": "node server.js",
-    "bundle-js": "webpack",
-    "compile-ts": "tsc",
+    "compile": "webpack",
     "open-browser": "start http://localhost:1337",
-    "start": "npm run compile-ts && npm run bundle-js && npm run open-browser & npm run serve"
+    "start": "npm run compile && npm run open-browser & npm run serve"
   }
 }

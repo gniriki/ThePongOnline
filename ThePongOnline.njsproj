@@ -40,9 +40,9 @@
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="typings\globals\socket.io\typings.json" />
-    <TypeScriptCompile Include="client\js\game.ts" />
-    <TypeScriptCompile Include="client\js\gamesession.ts" />
-    <TypeScriptCompile Include="client\js\player.ts" />
+    <TypeScriptCompile Include="Scripts\Client\game.ts" />
+    <TypeScriptCompile Include="Scripts\Client\gamesession.ts" />
+    <TypeScriptCompile Include="Scripts\Client\player.ts" />
     <TypeScriptCompile Include="Scripts\PongServer\GameMode.ts" />
     <TypeScriptCompile Include="Scripts\PongServer\GameServer.ts" />
     <TypeScriptCompile Include="Scripts\PongServer\GameSimulation.ts" />
@@ -65,6 +65,7 @@
     <Folder Include="client\js\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\HttpServer\" />
+    <Folder Include="Scripts\Client\" />
     <Folder Include="Scripts\Shared\" />
     <Folder Include="Scripts\PongServer\" />
     <Folder Include="Scripts\typings\" />
