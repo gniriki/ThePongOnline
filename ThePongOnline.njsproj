@@ -12,7 +12,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>68a3e747-d7ac-4a5f-964d-708c2de44b57</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>server.ts</StartupFile>
+    <StartupFile>Scripts\ServerHost.ts</StartupFile>
     <StartWebBrowser>True</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -39,6 +39,8 @@
     <Content Include="LICENSE" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
+    <Content Include="typings\globals\phaser\typings.json" />
+    <Content Include="typings\globals\socket.io-client\typings.json" />
     <Content Include="typings\globals\socket.io\typings.json" />
     <TypeScriptCompile Include="Scripts\Client\game.ts" />
     <TypeScriptCompile Include="Scripts\Client\gamesession.ts" />
@@ -51,11 +53,13 @@
     <TypeScriptCompile Include="Scripts\Shared\GameObject.ts" />
     <TypeScriptCompile Include="Scripts\typings\express\express.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
-    <TypeScriptCompile Include="server.ts" />
+    <TypeScriptCompile Include="Scripts\ServerHost.ts" />
     <Content Include="client\index.html" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <TypeScriptCompile Include="Scripts\HttpServer\PongHttpServer.ts" />
+    <TypeScriptCompile Include="typings\globals\phaser\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\socket.io-client\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\socket.io\index.d.ts" />
     <TypeScriptCompile Include="typings\index.d.ts" />
   </ItemGroup>
@@ -73,6 +77,8 @@
     <Folder Include="Scripts\typings\node\" />
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\phaser\" />
+    <Folder Include="typings\globals\socket.io-client\" />
     <Folder Include="typings\globals\socket.io\" />
   </ItemGroup>
   <ItemGroup>

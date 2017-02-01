@@ -1,5 +1,8 @@
 {
   "globalDependencies": {
     "socket.io": "registry:dt/socket.io#1.4.4+20160915014424"
+  },
+  "globalDevDependencies": {
+    "phaser": "github:photonstorm/phaser/v2/typescript/typings.json"
   }
 }

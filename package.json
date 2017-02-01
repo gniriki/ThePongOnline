@@ -20,7 +20,7 @@
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "serve": "node server.js",
+    "serve": "node ./dist/server.js",
     "compile": "webpack",
     "open-browser": "start http://localhost:1337",
     "start": "npm run compile && npm run open-browser & npm run serve"

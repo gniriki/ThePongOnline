@@ -1,11 +1,11 @@
-﻿import { GameSession } from "./gamesession";
-
+﻿//Phaser dependencies
 require("expose-loader?PIXI!pixi");
 require("expose-loader?p2!p2");
 
-var Phaser = require('phaser');
+import * as Phaser from 'phaser';
+import * as io from 'socket.io-client';
 
-var io = require('socket.io-client');
+import { GameSession } from "./gamesession";
 
 var game : any;
 
@@ -14,7 +14,7 @@ var h: number = 300;
 
 var session: GameSession = null;
 
-function setupSocket(socket : SocketIO.Socket) {
+function setupSocket(socket : SocketIOClient.Socket) {
     socket.on('setup',
         function (data : any) {
             //do init here
