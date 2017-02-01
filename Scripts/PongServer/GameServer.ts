@@ -1,7 +1,5 @@
-﻿var express = require('express');
-var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+﻿import * as http from 'http';
+import * as io from 'socket.io';
 
 import { GameSimulation } from "./GameSimulation";
 import { GameMode } from "./GameMode";
@@ -9,6 +7,9 @@ import { GameMode } from "./GameMode";
 import Socket = SocketIO.Socket;
 
 export class GameServer {
+    httpServer: http.Server;
+    ioServer: SocketIO.Server;
+
     simulation: GameSimulation;
     players: Array<Socket>;
     gameMode: GameMode;
@@ -22,12 +23,14 @@ export class GameServer {
         this.simulation = new GameSimulation();
         this.players = [];
         this.gameMode = GameMode.twoPlayerMode();
+
+        this.httpServer = http.createServer();
     }
 
     public run() {
         this.setupSockets();
 
-        http.listen(1338, function () {
+        this.httpServer.listen(1338, () => {
             console.log('listening on *:1338');
         });
 
@@ -54,7 +57,9 @@ export class GameServer {
     }
 
     public setupSockets() {
-        io.on('connection',
+        this.ioServer = io(this.httpServer);
+
+        this.ioServer.on('connection',
             (socket: Socket) => {
                 console.log('A user connected!', socket.handshake.query.type);
                 //console.log(socket);

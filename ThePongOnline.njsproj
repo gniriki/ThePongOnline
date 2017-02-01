@@ -42,7 +42,8 @@
     <Content Include="typings\globals\phaser\typings.json" />
     <Content Include="typings\globals\socket.io-client\typings.json" />
     <Content Include="typings\globals\socket.io\typings.json" />
-    <TypeScriptCompile Include="Scripts\Client\game.ts" />
+    <TypeScriptCompile Include="Scripts\Client\EntryPoint.ts" />
+    <TypeScriptCompile Include="Scripts\Client\GameClient.ts" />
     <TypeScriptCompile Include="Scripts\Client\gamesession.ts" />
     <TypeScriptCompile Include="Scripts\Client\player.ts" />
     <TypeScriptCompile Include="Scripts\PongServer\GameMode.ts" />
